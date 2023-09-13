@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "24ef1d83-76ff-4ce0-be9d-8a4689cb9189",
+		"name": "Blog Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2608928"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "amelia1",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "amelia1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asdf1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{api_url}}/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "glen@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asdf1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{api_url}}/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Blog",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer  {{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "blog 2445",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "test description",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/admin/Pictures/Saved Pictures/bOvf94dPRxWu0u3QsPjF_tree.jpg"
+						}
+					]
+				},
+				"url": "{{api_url}}/api/blogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Blog List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "blog1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "test description",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "guyguyguygy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_url}}/api/blogs?filter=1",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"blogs"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Blog Like/Dislike",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "blog1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "test description",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "guyguyguygy",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8000/api/blogs/26/like"
+			},
+			"response": []
+		}
+	]
+}
