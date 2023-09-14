@@ -18,12 +18,16 @@ class BlogController extends Controller
     {
        
         $query = Blog::with('likes');
+
+        if($request->filter == '1'){
+            $query->withCount('likes');
+        }
         if($request->search){
             $query->where('title','LIKE','%'.$request->search.'%');
             $query->orWhere('description','LIKE','%'.$request->search.'%');
         }
-        if($request->filter == 'most_liked'){
-
+        if($request->filter == '1'){
+            $query->orderBy('likes_count','desc');
         }else{
             $query->orderBy('id','desc');
         }
